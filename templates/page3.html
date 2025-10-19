@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction - Step 3</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen p-4">
+
+    <div class="w-full max-w-2xl bg-gray-800 rounded-2xl shadow-2xl p-8 md:p-12 space-y-8 border border-gray-700">
+        <!-- Header -->
+        <div>
+            <h1 class="text-3xl font-bold text-center text-indigo-400">House Price Prediction</h1>
+            <p class="text-center text-gray-400 mt-2">Step 3 of 3: Area & Location</p>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="w-full bg-gray-700 rounded-full h-2.5">
+            <div class="bg-indigo-500 h-2.5 rounded-full" style="width: 100%"></div>
+        </div>
+
+        <!-- Form for Step 3 -->
+        <form action="/predict" method="POST" class="space-y-6">
+            <!-- Hidden fields to carry over data from previous pages -->
+            <input type="hidden" name="bedrooms" value="{{ data_page2.bedrooms }}">
+            <input type="hidden" name="bathrooms" value="{{ data_page2.bathrooms }}">
+            <input type="hidden" name="floors" value="{{ data_page2.floors }}">
+            <input type="hidden" name="waterfront" value="{{ data_page2.waterfront }}">
+            <input type="hidden" name="condition" value="{{ data_page2.condition }}">
+            <input type="hidden" name="grade" value="{{ data_page2.grade }}">
+            <input type="hidden" name="age" value="{{ data_page2.age }}">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Living Area after Renovation -->
+                <div>
+                    <label for="living_area_renov" class="block mb-2 text-sm font-medium text-gray-300">Living Area (Sqft)</label>
+                    <input type="number" id="living_area_renov" name="living_area_renov" min="0" step="any" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-3" placeholder="e.g., 1800" required>
+                </div>
+
+                <!-- Lot Area -->
+                <div>
+                    <label for="lot_area" class="block mb-2 text-sm font-medium text-gray-300">Lot Area (Sqft)</label>
+                    <input type="number" id="lot_area" name="lot_area" min="0" step="any" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-3" placeholder="e.g., 5000" required>
+                </div>
+
+                <!-- Basement Area -->
+                <div>
+                    <label for="basement_area" class="block mb-2 text-sm font-medium text-gray-300">Basement Area (Sqft)</label>
+                    <input type="number" id="basement_area" name="basement_area" min="0" step="any" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-3" placeholder="e.g., 700" required>
+                </div>
+
+                <!-- Area of the House from Basement -->
+                <div>
+                    <label for="area_from_basement" class="block mb-2 text-sm font-medium text-gray-300">Area Above Basement (Sqft)</label>
+                    <input type="number" id="area_from_basement" name="area_from_basement" min="0" step="any" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-3" placeholder="e.g., 1100" required>
+                </div>
+
+                <!-- Latitude -->
+                <div>
+                    <label for="latitude" class="block mb-2 text-sm font-medium text-gray-300">Latitude</label>
+                    <input type="number" id="latitude" name="latitude" step="any" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-3" placeholder="e.g., 47.5112" required>
+                </div>
+
+                <!-- Longitude -->
+                <div>
+                    <label for="longitude" class="block mb-2 text-sm font-medium text-gray-300">Longitude</label>
+                    <input type="number" id="longitude" name="longitude" step="any" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-3" placeholder="e.g., -122.257" required>
+                </div>
+            </div>
+
+            <!-- Navigation Button -->
+            <div class="flex justify-end pt-4">
+                <button type="submit" class="text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-500 font-medium rounded-lg text-sm w-full sm:w-auto px-8 py-3 text-center transition duration-300 ease-in-out">Predict Price</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
